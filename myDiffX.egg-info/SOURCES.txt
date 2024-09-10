@@ -1,0 +1,9 @@
+README.md
+setup.py
+myDiffX/__init__.py
+myDiffX/runge_kutta.py
+myDiffX.egg-info/PKG-INFO
+myDiffX.egg-info/SOURCES.txt
+myDiffX.egg-info/dependency_links.txt
+myDiffX.egg-info/requires.txt
+myDiffX.egg-info/top_level.txt

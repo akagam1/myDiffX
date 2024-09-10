@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: myDiffX
+Version: 0.0.1
+Summary: A JAX based python library for numerical solvers for differential equations
+Home-page: https://github.com/akagam1/myDiffX
+Author: Arjun Puthli
+Author-email: arjunputhli2003@gmail.com
+License: MIT
+Requires-Dist: jax
