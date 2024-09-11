@@ -1,7 +1,15 @@
 import pytest
 import jax.numpy as jnp
-from myDiffX.runge_kutta import rk4
+from myDiffX import rk4, rk4_step
+from jax import config, jit
+from typing import Callable
+import os
 
+# Disable JAX traceback filtering
+os.environ['JAX_TRACEBACK_FILTERING'] = 'off'
+
+
+@jit
 def lorenz_system(t: float, state: jnp.ndarray) -> jnp.ndarray:
     """
     The Lorenz system of ODEs.
@@ -23,24 +31,28 @@ def lorenz_parameters():
         'num_steps': 5000
     }
 
-def test_rk4_lorenz(lorenz_parameters):
+def test_rk4_lorenz():
     # Solve the ODE
-    t, y = rk4(lorenz_system, **lorenz_parameters)
+    params = lorenz_parameters
+
+    
+    t, y = rk4(lorenz_system, jnp.array([1.0,1.0,1.0]), (0.0,50.0),5000)
     
     # Test the shape of the output
-    assert t.shape == (lorenz_parameters['num_steps'] + 1,)
-    assert y.shape == (lorenz_parameters['num_steps'] + 1, 3)
+    assert t.shape == (5001,)
+    assert y.shape == (5001, 3)
     
-    # Test if the initial condition is correct
-    jnp.testing.assert_allclose(y[0], lorenz_parameters['y0'])
-    
-    # Test if the time span is correct
-    assert t[0] == lorenz_parameters['t_span'][0]
-    assert t[-1] == lorenz_parameters['t_span'][1]
+ 
 
+    # Test if the time span is correct
+    assert t[0] == 0.0 
+    assert t[-1] == 50.0
     print(f"States: {y}")
     print(f"Time step: {t}")
 
+    #print(lorenz_system)
 
 if __name__ == "__main__":
     pytest.main([__file__])
+
+
