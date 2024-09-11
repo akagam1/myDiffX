@@ -1,4 +1,5 @@
 build/
-myDffX.egg-info/
+**/myDffX.egg-info
 **/__pycache__
 .pytest_cache
+

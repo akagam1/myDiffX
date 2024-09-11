@@ -1,6 +1,12 @@
 README.md
 setup.py
 myDiffX/__init__.py
+myDiffX/dopri5.py
+myDiffX/dopri8.py
+myDiffX/euler.py
+myDiffX/huen.py
+myDiffX/midpoint.py
+myDiffX/ralston.py
 myDiffX/runge_kutta.py
 myDiffX.egg-info/PKG-INFO
 myDiffX.egg-info/SOURCES.txt
